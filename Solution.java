@@ -5,40 +5,28 @@
  * 
  * The program finds the minimum number of coin switches needed to achieve an alternating array of coins, e.g. 101010 or 010101 if there are (for example) six coins. 
  */
-import java.util.ArrayList;
 
 public class Solution {
 
 	public int solution(int[] coins) {
-		// Creates two lists of alternating coins, one beginning 0 and one beginning 1
-		ArrayList<Integer> coinsBeginningHeads = populateCoinList(0, coins.length);
-		ArrayList<Integer> coinsBeginningTails = populateCoinList(1, coins.length);
-		// Each deviation from a particular alternating series of coins represents a coin flip
-		// that needs to be made to make 'coins' identical to the alternating series of coins in question.
-		int numDeviationsWithHeads = 0;
-		int numDeviationsWithTails = 0;
-		for (int i = 0; i < coins.length; i++) {
-			if (coins[i] != coinsBeginningHeads.get(i)) {
-				numDeviationsWithHeads++;
-			}
-			if (coins[i] != coinsBeginningTails.get(i)) {
-				numDeviationsWithTails++;
-			}
-		}
+		// Each deviation from a particular alternating series of coins represents a
+		// coin flip that needs to be made to make 'coins' identical to the alternating series of
+		// coins in question.
+		int numDeviationsWithHeads = getNumDeviations(0, coins);
+		int numDeviationsWithTails = getNumDeviations(1, coins);
 		return numDeviationsWithHeads < numDeviationsWithTails ? numDeviationsWithHeads : numDeviationsWithTails;
 	}
 
-	private static ArrayList<Integer> populateCoinList(int initialValue, int numCoins) {
-		ArrayList<Integer> tempList = new ArrayList<Integer>();
-		for (int j = 0; j < numCoins; j++) {
-			tempList.add(initialValue);
-			if (initialValue == 0) {
-				initialValue = 1;
-			} else {
-				initialValue = 0;
+	private int getNumDeviations(int headsOrTails, int[] coins) {
+		// With 'headsOrTails, heads = 0, tails = 1
+		int numDeviations = 0;
+		for (int coin : coins) {
+			if (coin != headsOrTails) {
+				numDeviations++;
 			}
+			headsOrTails = headsOrTails == 0 ? 1 : 0;
 		}
-		return tempList;
+		return numDeviations;
 	}
 
 	public static void main(String[] args) {
