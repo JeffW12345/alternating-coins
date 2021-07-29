@@ -1,8 +1,9 @@
 /*
- * Coins showing as heads are represented by 0s in an array of integers, and tails are represented as zeros.
+ * An array of integers representing coins is passed into the 'solution' method.
+ * 
+ * Coins showing as heads are represented by 0s, and tails are represented as 1s.
  * 
  * The program finds the minimum number of coin switches needed to achieve an alternating array of coins, e.g. 101010 or 010101 if there are (for example) six coins. 
- * 
  */
 import java.util.ArrayList;
 
