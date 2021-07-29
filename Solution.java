@@ -12,6 +12,7 @@ public class Solution {
 		// Creates two lists of alternating coins, one beginning 0 and one beginning 1
 		ArrayList<Integer> coinsBeginningHeads = populateCoinList(0, coins.length);
 		ArrayList<Integer> coinsBeginningTails = populateCoinList(1, coins.length);
+		// Each deviation from an alternating series of coins represents a coin flip that needs to be made.
 		int numDeviationsWithHeads = 0;
 		int numDeviationsWithTails = 0;
 		for (int i = 0; i < coins.length; i++) {
