@@ -18,7 +18,7 @@ public class Solution {
 	}
 
 	private int getNumDeviations(int headsOrTails, int[] coins) {
-		// With 'headsOrTails, heads = 0, tails = 1
+		// With 'headsOrTails', heads = 0, tails = 1
 		int numDeviations = 0;
 		for (int coin : coins) {
 			if (coin != headsOrTails) {
